@@ -23,8 +23,17 @@ test('rollMultipleD6', () => {
 
 test('rollsWithExplodingSixes', () => {
   const rollsBeforeExplodingSixes = [1, 2, 3, 4, 4, 4, 5, 6, 6];
-  const rolls = rollsWithExplodingSixes(rollsBeforeExplodingSixes);
-  expect(rolls.length).toEqual(11);
+  const rollsWithSingleExplodingSixes = rollsWithExplodingSixes(
+    rollsBeforeExplodingSixes,
+    1
+  );
+  expect(rollsWithSingleExplodingSixes.length).toEqual(11);
+
+  const rollsWithDoubleExplodingSixes = rollsWithExplodingSixes(
+    rollsBeforeExplodingSixes,
+    2
+  );
+  expect(rollsWithDoubleExplodingSixes.length).toEqual(13);
 
   const rollsBeforeExplodingSixes2 = [1, 2, 3, 4, 4, 4, 5];
   const rolls2 = rollsWithExplodingSixes(rollsBeforeExplodingSixes2);
@@ -57,7 +66,7 @@ test('getSuccessfulRolls', () => {
     numberOfRolls,
     4,
     {
-      explodingSixes: true,
+      explodingSixes: 1,
     }
   );
   expect(successfulRollsWithExplodingSixes.length).toBeLessThan(

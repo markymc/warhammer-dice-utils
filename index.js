@@ -19,9 +19,13 @@ export const rollMultipleD6 = (numberOfRolls) => {
   return rolls;
 };
 
-export const rollsWithExplodingSixes = (rolls) => {
+export const rollsWithExplodingSixes = (rolls, numberOfExplosions) => {
   const additionalHitRolls = [];
-  rolls.forEach((roll) => roll === 6 && additionalHitRolls.push(roll));
+  rolls.forEach(
+    (roll) =>
+      roll === 6 &&
+      additionalHitRolls.push(...Array(numberOfExplosions).fill(roll))
+  );
   return [...rolls, ...additionalHitRolls];
 };
 
@@ -48,7 +52,7 @@ export const rollMultipleD6WithOptions = (
   }
 
   if (explodingSixes) {
-    rolls = rollsWithExplodingSixes(rolls);
+    rolls = rollsWithExplodingSixes(rolls, explodingSixes);
   }
 
   return rolls;

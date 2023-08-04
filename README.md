@@ -10,7 +10,7 @@ Javascript util functions for rolling dice in Warhammer games, including rerolls
 
 `rerolls`: `Rerolls.ONES`, `Rerolls.ALL`, or `Rerolls.NONE` (or pass no key) - reroll failed rolls or one or any value.
 
-`explodingSixes`: `true` or `false` - any roll of six results in an additional roll of six being added. These are calculated after any rerolls.
+`explodingSixes`: `int` - any roll of six results in 'explodingSixes' additional rolls of six being added. These are calculated after any rerolls.
 
 ## Examples
 
